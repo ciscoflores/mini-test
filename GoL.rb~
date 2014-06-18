@@ -1,0 +1,41 @@
+class Cell
+	def initialize(status = :alive)
+		@status = status
+	end
+
+	def life_status
+		@status
+	end
+
+	def set_life_status(status)
+		@status = status if status != nil
+	end
+end
+
+class World
+	def initialize(size)
+		@colony = Array.new(size) { Array.new(size, Cell.new(:dead)) }
+	end
+
+	def set_location(row, column, state)
+		@colony[row][column] = Cell.new(state)	
+	end
+
+	def doomsday
+		@colony.each_with_index do |row, y|
+		end	
+	end
+
+	def print_world
+		@colony.each_with_index do |row|
+			row.each_with_index do |cell|
+			 	print cell.life_status.to_s + ' ' 
+			end
+			puts ''
+		end	
+	end
+end
+
+@game = World.new(4)
+@game.set_location(1,2,:alive)
+@game.print_world
